@@ -51,4 +51,5 @@ public class AuthorController {
         authorDao.delete(author);
         return "Author has been deleted!";
     }
+
 }
