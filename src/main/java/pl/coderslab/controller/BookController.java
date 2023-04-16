@@ -92,4 +92,24 @@ public class BookController {
     public String findByRating(@PathVariable int rating) {
         return bookDao.findAllByRating(rating).toString();
     }
+
+    @ResponseBody
+    @GetMapping("/book/findall")
+    public String findAllWithPublisher() {
+        return bookDao.findBooksWithPublisher().toString();
+    }
+
+    @ResponseBody
+    @GetMapping("/book/find/publisher")
+    public String findAllByPublisher() {
+        Publisher publisher = publisherDao.findById(6L);
+        return bookDao.findBookByPublisher(publisher).toString();
+    }
+
+    @ResponseBody
+    @GetMapping("/book/find/author")
+    public String findAllByAuthor() {
+        Author author = authorDao.findById(1L);
+        return bookDao.findBookByAuthor(author).toString();
+    }
 }
