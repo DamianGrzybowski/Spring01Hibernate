@@ -19,7 +19,5 @@ public class Publisher {
     @Column(name = "name")
     private String name;
 
-    public Publisher() {
-    }
 }
 

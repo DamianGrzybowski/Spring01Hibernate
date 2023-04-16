@@ -2,7 +2,6 @@ package pl.coderslab.dao;
 
 import org.springframework.stereotype.Repository;
 import pl.coderslab.model.Author;
-import pl.coderslab.model.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

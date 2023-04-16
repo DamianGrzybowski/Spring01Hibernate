@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -22,6 +24,4 @@ public class Author {
     @Column(name = "last_name")
     private String lastName;
 
-    public Author() {
-    }
 }
