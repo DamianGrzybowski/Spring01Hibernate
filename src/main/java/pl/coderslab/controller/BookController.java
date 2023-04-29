@@ -16,6 +16,7 @@ import pl.coderslab.model.Publisher;
 import pl.coderslab.repository.BookRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -109,5 +110,12 @@ public class BookController {
     public String findAllByAuthor() {
         Author author = authorDao.findById(1L);
         return bookDao.findBookByAuthor(author).toString();
+    }
+
+    @ResponseBody
+    @GetMapping("/book/test")
+    public void findBooksByAuthorName() {
+        bookRepository.findByAuthors_FirstName("Jack")
+                .forEach(book -> log.info(book.toString()));
     }
 }

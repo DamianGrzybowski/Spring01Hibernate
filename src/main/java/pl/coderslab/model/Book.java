@@ -49,6 +49,9 @@ public class Book {
 
     @Min(2)
     private int pages;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 
 }
