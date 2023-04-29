@@ -1,7 +1,7 @@
 package pl.coderslab.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +13,7 @@ import pl.coderslab.dao.PublisherDao;
 import pl.coderslab.model.Author;
 import pl.coderslab.model.Book;
 import pl.coderslab.model.Publisher;
+import pl.coderslab.repository.BookRepository;
 
 import javax.transaction.Transactional;
 import java.util.Random;
@@ -21,18 +22,14 @@ import java.util.Set;
 @Slf4j
 @Controller
 @Transactional
+@RequiredArgsConstructor
 
 public class BookController {
     private final BookDao bookDao;
     private final PublisherDao publisherDao;
     private final AuthorDao authorDao;
+    private final BookRepository bookRepository;
 
-    @Autowired
-    public BookController(BookDao bookDao, PublisherDao publisherDao, AuthorDao authorDao) {
-        this.bookDao = bookDao;
-        this.publisherDao = publisherDao;
-        this.authorDao = authorDao;
-    }
 
     @ResponseBody()
     @RequestMapping("/book/add")
@@ -85,6 +82,7 @@ public class BookController {
     @RequestMapping("/book/all")
     public void getAllBooks() {
 //        bookDao.findAll().forEach(book -> log.info(book.toString()));
+        bookRepository.findAll().forEach(book -> log.info(book.toString()));
     }
 
     @ResponseBody

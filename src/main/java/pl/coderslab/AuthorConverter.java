@@ -1,7 +1,6 @@
 package pl.coderslab;
 
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 import pl.coderslab.dao.AuthorDao;
 import pl.coderslab.model.Author;
 
