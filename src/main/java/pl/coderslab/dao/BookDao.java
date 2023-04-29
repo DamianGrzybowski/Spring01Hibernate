@@ -34,14 +34,14 @@ public class BookDao {
 
     public List<Book> findAll() {
         return entityManager
-                .createQuery("SELECT b from Book b")
+                .createQuery("SELECT b from Book b left join fetch b.authors")
                 .getResultList();
     }
 
     public List<Book> findAllByRating(int rating) {
         return entityManager
-                .createQuery("SELECT b from Book b WHERE b.rating=:raiting")
-                .setParameter("raiting", rating)
+                .createQuery("SELECT b from Book b WHERE b.rating=:rating")
+                .setParameter("rating", rating)
                 .getResultList();
     }
 
@@ -64,5 +64,8 @@ public class BookDao {
                 .setParameter("author", author)
                 .getResultList();
     }
+
+
+
 
 }

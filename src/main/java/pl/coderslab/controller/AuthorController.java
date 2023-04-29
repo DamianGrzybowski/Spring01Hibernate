@@ -1,5 +1,7 @@
 package pl.coderslab.controller;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,17 +10,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.dao.AuthorDao;
 import pl.coderslab.model.Author;
 
+import javax.transaction.Transactional;
+
+@Slf4j
 @Controller
+@Transactional
+@RequiredArgsConstructor
 public class AuthorController {
     private final AuthorDao authorDao;
 
-    @Autowired
-    public AuthorController(AuthorDao authorDao) {
-        this.authorDao = authorDao;
-    }
 
     @RequestMapping("/author/add")
-    @ResponseBody
     public String add() {
         Author author = new Author();
         author.setFirstName("John");
