@@ -115,7 +115,7 @@ public class BookController {
     @ResponseBody
     @GetMapping("/book/test")
     public void findBooksByAuthorName() {
-        bookRepository.findByAuthors_FirstName("Jack")
+        bookRepository.findByRatingBetween(3,5)
                 .forEach(book -> log.info(book.toString()));
     }
 }

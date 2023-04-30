@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.dao.AuthorDao;
 import pl.coderslab.model.Author;
+import pl.coderslab.repository.AuthorRepository;
 
 import javax.transaction.Transactional;
 
@@ -18,6 +19,7 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class AuthorController {
     private final AuthorDao authorDao;
+    private final AuthorRepository authorRepository;
 
 
     @RequestMapping("/author/add")
@@ -53,5 +55,14 @@ public class AuthorController {
         authorDao.delete(author);
         return "Author has been deleted!";
     }
+
+
+    @ResponseBody
+    @RequestMapping("author/test")
+    public void test() {
+        authorRepository.findByPeselContaining("15")
+                .forEach(author -> log.info(author.toString()));
+    }
+
 
 }
